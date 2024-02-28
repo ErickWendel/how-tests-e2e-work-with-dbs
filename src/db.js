@@ -4,8 +4,6 @@ import config from './config.js';
 async function connect() {
         const dbClient = new MongoClient(config.dbURL);
 
-        await dbClient.connect();
-
         const db = dbClient.db(config.dbName);
         const dbUsers = db.collection(config.collection);
 

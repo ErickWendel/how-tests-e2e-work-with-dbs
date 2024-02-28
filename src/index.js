@@ -12,7 +12,12 @@ if (!isTestEnv && !process.env.DB_NAME) {
 const { dbClient, collections: { dbUsers } } = await getDb()
 
 fastify.get('/customers', async (request, reply) => {
-    const users = (await dbUsers.find({}).project({ _id: 0}).sort({ name: 1}).toArray())
+    const users = await dbUsers
+        .find({})
+        .project({ _id: 0 })
+        .sort({ name: 1 })
+        .toArray()
+
     return reply.code(200).send(users)
 })
 
