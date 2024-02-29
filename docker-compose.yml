@@ -9,7 +9,8 @@ services:
       DB_NAME: customers
     ports:
       - "9999:9999"
-    command: npm run test
+    # command: npm run test
+    command: npm run test:dev
     volumes:
       - .:/src
       - nodemodules:/src/node_modules
